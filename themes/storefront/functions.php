@@ -69,3 +69,16 @@ if ( version_compare( get_bloginfo( 'version' ), '4.7.3', '>=' ) && ( is_admin()
  * Note: Do not add any custom code here. Please use a custom plugin so that your customizations aren't lost during updates.
  * https://github.com/woocommerce/theme-customisations
  */
+
+
+ // Teste Lexart Labs
+
+add_action('woocommerce_order_details_after_order_table', 'cancel_txt_status_upd', 10, 4 );
+function cancel_txt_status_upd( $order ) {
+
+	$email = $order->get_billing_email();
+
+    if ( $order->has_status('cancelled') && is_wc_endpoint_url( 'view-order' ) ){
+		printf( __( '<p class="cancelled-text">%s pedido cancelado.</p>', 'woocommerce' ), '<strong>' .$email . '</strong>' );
+    }
+}
