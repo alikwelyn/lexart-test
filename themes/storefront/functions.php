@@ -73,6 +73,7 @@ if ( version_compare( get_bloginfo( 'version' ), '4.7.3', '>=' ) && ( is_admin()
 
  // Teste Lexart Labs
 
+ /* ADD CANCELED NOTE ON MY-ACCOUNT/VIEW-ORDER/$ID PAGE */
 add_action('woocommerce_order_details_after_order_table', 'cancel_txt_status_upd', 10, 4 );
 function cancel_txt_status_upd( $order ) {
 
