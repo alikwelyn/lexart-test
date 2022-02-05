@@ -1,0 +1,38 @@
+/* SINGLE PRODUCT VIEW PAGE STYLE- EXAMPLE*/
+
+.single-product div.product p.price {
+    color: #FFA500;
+}
+
+.single-product div.product table.variations select {
+    background-color: #FFA500;
+    border: 1px solid #FFA500;
+    color: #fff;
+    min-height: 30px;
+}
+
+.button.alt {
+    background-color: #FFA500;
+    border: 1px solid #FFA500;
+    color: #fff;
+    border-radius: 5px;
+    transition: 300ms;
+}
+
+.button.alt:hover {
+    background-color: transparent;
+    border: 1px solid #FFA500;
+    color: #FFA500;
+}
+
+.quantity .qty {
+    background-color: transparent;
+    color: #FFA500;
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+}
+
+.quantity .qty:focus {
+    background-color: transparent;
+    outline-color: transparent;
+}

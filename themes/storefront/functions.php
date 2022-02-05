@@ -71,15 +71,30 @@ if ( version_compare( get_bloginfo( 'version' ), '4.7.3', '>=' ) && ( is_admin()
  */
 
 
- // Teste Lexart Labs
+// Teste Lexart Labs
 
- /* ADD CANCELED NOTE ON MY-ACCOUNT/VIEW-ORDER/$ID PAGE */
+/* ADD CANCELED NOTE ON MY-ACCOUNT/VIEW-ORDER/$ID PAGE */
 add_action('woocommerce_order_details_after_order_table', 'cancel_txt_status_upd', 10, 4 );
 function cancel_txt_status_upd( $order ) {
-
 	$email = $order->get_billing_email();
-
     if ( $order->has_status('cancelled') && is_wc_endpoint_url( 'view-order' ) ){
 		printf( __( '<p class="cancelled-text">%s pedido cancelado.</p>', 'woocommerce' ), '<strong>' .$email . '</strong>' );
     }
+}
+
+/* REMOVE SIDEBAR SINGLE PRODUCT VIEW PAGE */
+add_filter( 'is_active_sidebar', 'remove_sidebar_single_product_page', 10, 2 );
+function remove_sidebar_single_product_page() {
+	if ( is_product() ) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+/* LOAD STYLE FOR SINGLE PRODUCT VIEW PAGE */
+add_action( 'wp_enqueue_scripts', 'load_spv_style' );
+	function load_spv_style( ) {
+		wp_enqueue_style( 'style-spv', get_theme_file_uri( 'style-spv.css' )
+	);
 }
